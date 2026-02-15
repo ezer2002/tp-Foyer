@@ -16,6 +16,11 @@ public class Universite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long idUniversite;
+
     String nomUniversite;
     String adresse;
+
+    @OneToOne
+    @ToString.Exclude
+    Foyer foyer;
 }
