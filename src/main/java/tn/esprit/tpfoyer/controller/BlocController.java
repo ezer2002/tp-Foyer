@@ -38,4 +38,19 @@ public class BlocController {
     Bloc findByIdBloc(@PathVariable Long idBloc) {
         return blocService.findBloc(idBloc);
     }
+
+    @PostMapping("/add-bloc-and-foyer")
+    Bloc addBlocAndFoyer(@RequestBody Bloc bloc) {
+        return blocService.addBlocAndFoyer(bloc);
+    }
+
+    @PutMapping("/assign-bloc-to-foyer/{idBloc}/{idFoyer}")
+    Bloc assignBlocToFoyer(@PathVariable Long idBloc, @PathVariable Long idFoyer) {
+        return blocService.assignBlocToFoyer(idBloc, idFoyer);
+    }
+
+    @PutMapping("/desaffect-bloc-from-foyer/{idBloc}")
+    Bloc desaffectBlocFromFoyer(@PathVariable Long idBloc) {
+        return blocService.desaffecterBlocFromFoyer(idBloc);
+    }
 }

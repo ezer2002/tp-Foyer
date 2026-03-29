@@ -1,5 +1,6 @@
 package tn.esprit.tpfoyer.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -20,11 +21,18 @@ public class Reservation {
     @Id
     String idReservation;
 
+    @Temporal(TemporalType.DATE)
     Date anneeUniversitaire;
+
     boolean estValide;
 
+    @ManyToOne
+    @ToString.Exclude
+    @JsonIgnore
+    Chambre chambre;
 
     @ManyToMany
     @ToString.Exclude
+    @JsonIgnore
     Set<Etudiant> etudiants = new HashSet<>();
 }

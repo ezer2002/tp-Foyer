@@ -1,6 +1,8 @@
 package tn.esprit.tpfoyer.services;
 
 import tn.esprit.tpfoyer.entities.Chambre;
+import tn.esprit.tpfoyer.entities.Reservation;
+
 import java.util.List;
 
 public interface IChambreService {
@@ -8,4 +10,8 @@ public interface IChambreService {
     void deleteChambre(Long idChambre);
     List<Chambre> findAllChambres();
     Chambre findChambre(Long idChambre);
+
+    Chambre addChambreAndReservations(Chambre chambre);
+    Reservation assignReservationToChambre(String idReservation, Long idChambre);
+    Reservation annulerReservation(String idReservation);
 }

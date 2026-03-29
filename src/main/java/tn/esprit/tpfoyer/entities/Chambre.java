@@ -1,5 +1,6 @@
 package tn.esprit.tpfoyer.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -27,9 +28,10 @@ public class Chambre {
 
     @ManyToOne
     @ToString.Exclude
+    @JsonIgnore
     Bloc bloc;
 
-    @OneToMany
+    @OneToMany(mappedBy = "chambre")
     @ToString.Exclude
     Set<Reservation> reservations = new HashSet<>();
 }
