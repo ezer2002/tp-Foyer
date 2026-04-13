@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entities.Chambre;
 import tn.esprit.tpfoyer.entities.Reservation;
+import tn.esprit.tpfoyer.entities.TypeChambre;
 import tn.esprit.tpfoyer.services.IChambreService;
 
 import java.util.List;
@@ -54,5 +55,15 @@ public class ChambreController {
     @PutMapping("/cancel-reservation/{idReservation}")
     Reservation annulerReservation(@PathVariable String idReservation) {
         return chambreService.annulerReservation(idReservation);
+    }
+
+    @GetMapping("/findByType/{typeC}")
+    List<Chambre> findByType(@PathVariable TypeChambre typeC) {
+        return chambreService.findChambresByType(typeC);
+    }
+
+    @GetMapping("/findByNumero/{numeroChambre}")
+    Chambre findByNumero(@PathVariable long numeroChambre) {
+        return chambreService.findChambreByNumero(numeroChambre);
     }
 }

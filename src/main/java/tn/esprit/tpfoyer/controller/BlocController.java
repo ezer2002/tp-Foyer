@@ -53,4 +53,25 @@ public class BlocController {
     Bloc desaffectBlocFromFoyer(@PathVariable Long idBloc) {
         return blocService.desaffecterBlocFromFoyer(idBloc);
     }
+
+    @GetMapping("/findBlocsSansFoyer")
+    List<Bloc> findBlocsSansFoyer() {
+        return blocService.findBlocsSansFoyer();
+    }
+
+    @GetMapping("/findByCapaciteGreaterThan/{capacite}")
+    List<Bloc> findByCapaciteGreaterThan(@PathVariable long capacite) {
+        return blocService.findBlocsByCapaciteGreaterThan(capacite);
+    }
+
+    @GetMapping("/findByNomStartingWith/{prefix}")
+    List<Bloc> findByNomStartingWith(@PathVariable String prefix) {
+        return blocService.findBlocsByNomStartingWith(prefix);
+    }
+
+    @GetMapping("/findByNomStartingWithAndCapaciteGreaterThan/{prefix}/{capacite}")
+    List<Bloc> findByNomStartingWithAndCapaciteGreaterThan(@PathVariable String prefix,
+                                                           @PathVariable long capacite) {
+        return blocService.findBlocsByNomStartingWithAndCapaciteGreaterThan(prefix, capacite);
+    }
 }
